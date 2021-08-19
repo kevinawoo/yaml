@@ -263,7 +263,7 @@ func (n *Node) Encode(v interface{}) (err error) {
 	e.marshalDoc("", reflect.ValueOf(v))
 	e.finish()
 	p := newParser(e.out)
-	p.textless = true
+	p.textless = false // we want to preseve comments
 	defer p.destroy()
 	doc := p.parse()
 	*n = *doc.Content[0]
